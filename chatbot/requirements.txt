@@ -1,0 +1,4 @@
+Flask
+langchain
+google-generativeai
+gtts
