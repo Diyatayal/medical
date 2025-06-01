@@ -1,5 +1,0 @@
-streamlit
-openai
-textblob
-pandas
-scikit-learn
