@@ -2,44 +2,19 @@ from flask import Flask, request, render_template, jsonify  # Import jsonify
 import numpy as np
 import pandas as pd
 import pickle
-from flask_cors import CORS
-from langchain import PromptTemplate
-from langchain.chains import ConversationChain
-from langchain.memory import ConversationBufferMemory
-from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 # flask app
-app = Flask(__name__, template_folder='templates', static_folder='static')
-CORS(app)
-
-
-template = """You are a helpful medical chatbot.
-{history}
-User: {input}
-Bot:"""
-
-prompt = PromptTemplate(
-    input_variables=["history", "input"],
-    template=template
-)
+app = Flask(__name__)
 
 
 
-gemini = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key="AIzaSyB-BAXi1UFXd1ofAo65T2QNUt7d5pVhk_k")
-memory = ConversationBufferMemory(return_messages=True)
-conversation = ConversationChain(
-    llm=gemini,
-    memory=memory,
-    prompt=prompt,
-    verbose=True
-)
 # load databasedataset===================================
 sym_des = pd.read_csv("symtoms_df.csv")
 precautions = pd.read_csv("precautions_df.csv")
 workout = pd.read_csv("workout_df.csv")
 description = pd.read_csv("description.csv")
-medications = pd.read_csv('medications.csv')
+medications = pd.read_csv("medications.csv")
 diets = pd.read_csv("diets.csv")
 
 
@@ -75,12 +50,8 @@ diseases_list = {15: 'Fungal infection', 4: 'Allergy', 16: 'GERD', 9: 'Chronic c
 def get_predicted_value(patient_symptoms):
     input_vector = np.zeros(len(symptoms_dict))
     for item in patient_symptoms:
-        if item not in symptoms_dict:
-            raise ValueError(f"Invalid symptom: {item}")
         input_vector[symptoms_dict[item]] = 1
-    prediction = svc.predict([input_vector])[0]
-    return diseases_list.get(prediction, "Unknown Disease")
-
+    return diseases_list[svc.predict([input_vector])[0]]
 
 
 
@@ -142,11 +113,6 @@ def developer():
 @app.route('/blog')
 def blog():
     return render_template("blog.html")
-
-
-
-
-    
 
 
 if __name__ == '__main__':

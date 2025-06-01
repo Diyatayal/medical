@@ -1,11 +1,9 @@
 Flask
-<<<<<<< HEAD
 langchain
 google-generativeai
 gtts
-=======
 flask-cors
 langchain
 langchain-google-genai
 google-generativeai
->>>>>>> 1c7da6e6ec74dcae961d883140dd0e76d1d6b2e2
+

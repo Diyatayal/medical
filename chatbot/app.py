@@ -6,35 +6,24 @@ from langchain.memory import ConversationBufferMemory
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 
-<<<<<<< HEAD
-app = Flask(__name__, template_folder='templates')
-CORS(app)
+
 
 # Create a prompt template with instruction for short replies
-=======
+
 app = Flask(__name__, template_folder='templates', static_folder='static')
 CORS(app)
 
->>>>>>> 1c7da6e6ec74dcae961d883140dd0e76d1d6b2e2
 template = """You are a helpful medical chatbot.
 {history}
 User: {input}
 Bot:"""
-<<<<<<< HEAD
-=======
 
->>>>>>> 1c7da6e6ec74dcae961d883140dd0e76d1d6b2e2
+
 prompt = PromptTemplate(
     input_variables=["history", "input"],
     template=template
 )
 
-<<<<<<< HEAD
-# Configure Gemini
-=======
-
-
->>>>>>> 1c7da6e6ec74dcae961d883140dd0e76d1d6b2e2
 gemini = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key="AIzaSyB-BAXi1UFXd1ofAo65T2QNUt7d5pVhk_k")
 memory = ConversationBufferMemory(return_messages=True)
 conversation = ConversationChain(
@@ -46,11 +35,10 @@ conversation = ConversationChain(
 
 @app.route("/")
 def index():
-<<<<<<< HEAD
-    return render_template("index.html")  # Render the HTML page
-=======
-    return render_template("index.html")
->>>>>>> 1c7da6e6ec74dcae961d883140dd0e76d1d6b2e2
+
+    return render_template("chatbot.html")  # Render the HTML page
+
+    
 
 @app.route("/chat", methods=["POST"])
 def chat():
