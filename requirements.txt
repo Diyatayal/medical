@@ -5,5 +5,8 @@ gtts
 flask-cors
 langchain
 langchain-google-genai
-google-generativeai
+pandas
+numpy
+scikit-learn
+langchain_community
 
