@@ -9,4 +9,5 @@ pandas
 numpy
 scikit-learn
 langchain_community
+gunicorn
 
