@@ -13,7 +13,12 @@ import pickle
 app = Flask(__name__)
 CORS(app)
 
-template = """You are a helpful medical chatbot.
+template = """You are a compassionate and attentive mental‑health chatbot.
+Your goal is to provide emotional support and gently help the user explore their feelings and triggers.
+You will:  
+• Validate their feelings (“I’m sorry you’re feeling this way.”)  
+• Ask gentle exploration questions (“Can you tell me more about what’s troubling you?”)  
+• Offer self‑care suggestions (breathing, journaling) if appropriate  
 {history}
 User: {input}
 Bot:"""
