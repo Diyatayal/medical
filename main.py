@@ -29,7 +29,7 @@ prompt = PromptTemplate(
     template=template
 )
 
-gemini = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key="AIzaSyB-BAXi1UFXd1ofAo65T2QNUt7d5pVhk_k")
+gemini = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key="AIzaSyB08PkOF7UrCAlv0DYanpAFOjHvLGmaRgk")
 memory = ConversationBufferMemory(return_messages=True)
 conversation = ConversationChain(
     llm=gemini,
